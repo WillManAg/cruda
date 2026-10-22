@@ -24,13 +24,12 @@
     <main class="contenedor">
 
         <header class="cabecera">
-            <span class="etiqueta">PANEL DE ADMINISTRACIÓN</span>
+            <span class="etiqueta">PANEL DE GESTIÓN DE LA BBDD</span>
 
-            <h1>Gestión de empleados<span class="punto">.</span></h1>
+            <h1>Gestión de empleados</h1>
 
             <p>
-                Administra los empleados de tu empresa
-                desde un solo lugar.
+                CRUD sobre la tabla de emp
             </p>
         </header>
 
@@ -53,7 +52,7 @@
                     </div>
 
                     <h3>Añadir empleado</h3>
-                    <p>Registra un nuevo empleado en la base de datos.</p>
+                    <p>Registra un nuevo empleado en la tabla.</p>
                     <span class="flecha">↗</span>
                 </a>
 
@@ -68,7 +67,7 @@
                     </div>
 
                     <h3>Modificar empleado</h3>
-                    <p>Actualiza la información de un empleado existente.</p>
+                    <p>Actualiza la información de un emp en la tabla.</p>
                     <span class="flecha">↗</span>
                 </a>
 
@@ -84,8 +83,8 @@
                         </svg>
                     </div>
 
-                    <h3>Eliminar empleado</h3>
-                    <p>Elimina un registro de forma permanente y segura.</p>
+                    <h3>Despedir empleado</h3>
+                    <p>Elimina un registro de forma PERMANENTEEEE.</p>
                     <span class="flecha">↗</span>
                 </a>
 
@@ -100,7 +99,7 @@
                     </div>
 
                     <h3>Ver empleados</h3>
-                    <p>Consulta todos los registros almacenados.</p>
+                    <p>Consulta todos los registros de la tabla.</p>
                     <span class="flecha">↗</span>
                 </a>
 
