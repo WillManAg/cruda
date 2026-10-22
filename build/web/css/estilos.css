@@ -1,0 +1,239 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 22 oct 2026, 9:54:50
+    Author     : william.marin
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", sans-serif;
+    background: #f5f5f7;
+    color: #1d1d1f;
+    min-height: 100vh;
+}
+
+.contenedor {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 90px 30px 35px;
+}
+
+.cabecera {
+    margin-bottom: 55px;
+}
+
+.etiqueta {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #86868b;
+}
+
+.cabecera h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -1.8px;
+    margin: 15px 0;
+}
+
+.punto {
+    color: #0071e3;
+}
+
+.cabecera p {
+    font-size: 17px;
+    color: #86868b;
+    line-height: 1.6;
+}
+
+.panel {
+    background: white;
+    padding: 35px;
+    border-radius: 22px;
+    border: 1px solid #e8e8ed;
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.025);
+}
+
+.panel-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 15px;
+}
+
+.panel-titulo h2 {
+    font-size: 20px;
+    font-weight: 650;
+    letter-spacing: -0.5px;
+}
+
+.panel-titulo span {
+    font-size: 13px;
+    color: #86868b;
+}
+
+.acciones {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.tarjeta {
+    position: relative;
+    display: block;
+    min-height: 205px;
+    background: #fafafa;
+    border: 1px solid #ededf0;
+    border-radius: 16px;
+    padding: 26px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease,
+                border-color 0.2s ease,
+                background 0.2s ease;
+}
+
+.tarjeta:hover {
+    background: white;
+    border-color: #d2d2d7;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06);
+}
+
+.tarjeta:focus-visible {
+    outline: 3px solid #0071e3;
+    outline-offset: 3px;
+}
+
+.tarjeta h3 {
+    font-size: 17px;
+    font-weight: 650;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+}
+
+.tarjeta p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #86868b;
+    max-width: 260px;
+}
+
+.icono {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    margin-bottom: 22px;
+}
+
+.icono svg {
+    width: 23px;
+    height: 23px;
+}
+
+.icono-azul {
+    background: #e7f1ff;
+    color: #0071e3;
+}
+
+.icono-violeta {
+    background: #f0eaff;
+    color: #8957d8;
+}
+
+.icono-rojo {
+    background: #ffebeb;
+    color: #e5484d;
+}
+
+.icono-verde {
+    background: #e5f6eb;
+    color: #28a56a;
+}
+
+.flecha {
+    position: absolute;
+    right: 24px;
+    top: 25px;
+    font-size: 20px;
+    color: #b0b0b5;
+    transition: color 0.2s ease;
+}
+
+.tarjeta:hover .flecha {
+    color: #0071e3;
+}
+
+.pie {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+    font-size: 12px;
+    color: #86868b;
+}
+
+.pie a {
+    color: #0071e3;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.pie a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 650px) {
+
+    .contenedor {
+        padding: 55px 18px 25px;
+    }
+
+    .cabecera {
+        margin-bottom: 35px;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+
+    .panel-titulo {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .acciones {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta {
+        min-height: 185px;
+    }
+
+    .pie {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta,
+    .flecha {
+        transition: none;
+    }
+}
