@@ -1,11 +1,18 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 22 oct 2026, 9:54:50
-    Author     : william.marin
-*/
+
+/* ========================================
+   VARIABLES Y ESTILOS GENERALES
+   ======================================== */
+
+:root {
+    --color-fondo: #f5f5f7;
+    --color-superficie: #ffffff;
+    --color-superficie-suave: #fafafa;
+    --color-texto: #1d1d1f;
+    --color-texto-secundario: #86868b;
+    --color-acento: #0071e3;
+    --color-borde: #e8e8ed;
+    --color-borde-suave: #ededf0;
+}
 
 * {
     margin: 0;
@@ -16,8 +23,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 body {
     font-family: -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
-    background: #f5f5f7;
-    color: #1d1d1f;
+    background: var(--color-fondo);
+    color: var(--color-texto);
     min-height: 100vh;
 }
 
@@ -27,6 +34,11 @@ body {
     padding: 90px 30px 35px;
 }
 
+
+/* ========================================
+   CABECERA - TODAS LAS PAGINAS
+   ======================================== */
+
 .cabecera {
     margin-bottom: 55px;
 }
@@ -35,7 +47,7 @@ body {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
-    color: #86868b;
+    color: var(--color-texto-secundario);
 }
 
 .cabecera h1 {
@@ -45,17 +57,26 @@ body {
     margin: 15px 0;
 }
 
+.punto {
+    color: var(--color-acento);
+}
+
 .cabecera p {
     font-size: 17px;
-    color: #86868b;
+    color: var(--color-texto-secundario);
     line-height: 1.6;
 }
 
+
+/* ========================================
+   PANELES COMPARTIDOS
+   ======================================== */
+
 .panel {
-    background: white;
+    background: var(--color-superficie);
     padding: 35px;
     border-radius: 22px;
-    border: 1px solid #e8e8ed;
+    border: 1px solid var(--color-borde);
     box-shadow: 0 8px 35px rgba(0, 0, 0, 0.025);
 }
 
@@ -75,8 +96,13 @@ body {
 
 .panel-titulo span {
     font-size: 13px;
-    color: #86868b;
+    color: var(--color-texto-secundario);
 }
+
+
+/* ========================================
+   INDEX - TARJETAS DE ACCIONES
+   ======================================== */
 
 .acciones {
     display: grid;
@@ -88,8 +114,8 @@ body {
     position: relative;
     display: block;
     min-height: 205px;
-    background: #fafafa;
-    border: 1px solid #ededf0;
+    background: var(--color-superficie-suave);
+    border: 1px solid var(--color-borde-suave);
     border-radius: 16px;
     padding: 26px;
     text-decoration: none;
@@ -101,14 +127,14 @@ body {
 }
 
 .tarjeta:hover {
-    background: white;
+    background: var(--color-superficie);
     border-color: #d2d2d7;
     transform: translateY(-3px);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06);
 }
 
 .tarjeta:focus-visible {
-    outline: 3px solid #0071e3;
+    outline: 3px solid var(--color-acento);
     outline-offset: 3px;
 }
 
@@ -122,9 +148,14 @@ body {
 .tarjeta p {
     font-size: 13px;
     line-height: 1.6;
-    color: #86868b;
+    color: var(--color-texto-secundario);
     max-width: 260px;
 }
+
+
+/* ========================================
+   ICONOS COMPARTIDOS
+   ======================================== */
 
 .icono {
     width: 43px;
@@ -143,7 +174,7 @@ body {
 
 .icono-azul {
     background: #e7f1ff;
-    color: #0071e3;
+    color: var(--color-acento);
 }
 
 .icono-violeta {
@@ -171,33 +202,18 @@ body {
 }
 
 .tarjeta:hover .flecha {
-    color: #0071e3;
+    color: var(--color-acento);
 }
 
-.pie {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    margin-top: 30px;
-    font-size: 12px;
-    color: #86868b;
-}
 
-.pie a {
-    color: #0071e3;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.pie a:hover {
-    text-decoration: underline;
-}
+/* ========================================
+   READ - LISTADO DE EMPLEADOS
+   ======================================== */
 
 .tabla-contenedor {
     width: 100%;
     overflow-x: auto;
-    border: 1px solid #e8e8ed;
+    border: 1px solid var(--color-borde);
     border-radius: 14px;
 }
 
@@ -209,8 +225,8 @@ body {
 }
 
 .tabla-empleados th {
-    background: #f5f5f7;
-    color: #86868b;
+    background: var(--color-fondo);
+    color: var(--color-texto-secundario);
     font-size: 11px;
     font-weight: 700;
     padding: 16px;
@@ -220,7 +236,7 @@ body {
 .tabla-empleados td {
     padding: 16px;
     font-size: 13px;
-    border-top: 1px solid #ededf0;
+    border-top: 1px solid var(--color-borde-suave);
 }
 
 .tabla-empleados tbody tr:hover {
@@ -235,36 +251,26 @@ body {
     margin-top: 25px;
 }
 
-.boton-volver {
-    display: inline-block;
-    padding: 12px 20px;
-    border-radius: 10px;
-    background: #f5f5f7;
-    color: #1d1d1f;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    transition: background 0.2s;
-}
 
-.boton-volver:hover {
-    background: #e8e8ed;
-}
+/* ========================================
+   FORMULARIOS - CREATE Y FUTURO UPDATE
+   ======================================== */
 
-.cabecera-formulario {
-    margin-bottom: 35px;
-}
+/* Distribucion de formulario y panel derecho */
 
 .formulario-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 22px;
-    align-items: start;
+    align-items: flex-start;
 }
 
 .formulario-panel {
+    flex: 2 1 500px;
     min-width: 0;
 }
+
+/* Rejilla de campos */
 
 .formulario-grid {
     display: grid;
@@ -283,28 +289,42 @@ body {
     grid-column: 1 / -1;
 }
 
+/* Etiquetas */
+
 .campo label {
     font-size: 13px;
     font-weight: 600;
-    color: #1d1d1f;
+    color: var(--color-texto);
 }
+
+.requerido {
+    color: #e5484d;
+}
+
+.campo small {
+    color: var(--color-texto-secundario);
+    font-size: 11px;
+}
+
+/* Entradas de datos */
 
 .campo input {
     width: 100%;
     padding: 13px 14px;
     border: 1px solid #dedee3;
     border-radius: 10px;
-    background: #fafafa;
+    background: var(--color-superficie-suave);
     font-family: inherit;
     font-size: 14px;
-    color: #1d1d1f;
+    color: var(--color-texto);
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s,
+        box-shadow 0.2s;
 }
 
 .campo input:focus {
-    background: white;
-    border-color: #0071e3;
+    background: var(--color-superficie);
+    border-color: var(--color-acento);
     box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
 }
 
@@ -312,28 +332,16 @@ body {
     color: #a1a1a6;
 }
 
-.campo small {
-    color: #86868b;
-    font-size: 11px;
-}
 
-.requerido {
-    color: #e5484d;
-}
+/* ========================================
+   BOTONES COMPARTIDOS
+   ======================================== */
 
-/* BOTONES DEL FORMULARIO */
-
-.formulario-acciones {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 35px;
-    padding-top: 25px;
-    border-top: 1px solid #ededf0;
-}
+/* Utilizados en formulario y listado */
 
 .boton-primario,
-.boton-secundario {
+.boton-secundario,
+.boton-volver {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -348,31 +356,59 @@ body {
     transition: background 0.2s;
 }
 
+/* Accion principal */
+
 .boton-primario {
     color: white;
-    background: #0071e3;
+    background: var(--color-acento);
 }
 
 .boton-primario:hover {
     background: #005bb5;
 }
 
-.boton-secundario {
-    color: #1d1d1f;
-    background: #f5f5f7;
+/* Acciones secundarias */
+
+.boton-secundario,
+.boton-volver {
+    color: var(--color-texto);
+    background: var(--color-fondo);
 }
 
-.boton-secundario:hover {
-    background: #e8e8ed;
+.boton-secundario:hover,
+.boton-volver:hover {
+    background: var(--color-borde);
 }
 
-/* PANEL DERECHO DE REQUISITOS */
+.boton-primario:focus-visible,
+.boton-secundario:focus-visible,
+.boton-volver:focus-visible {
+    outline: 3px solid var(--color-acento);
+    outline-offset: 3px;
+}
+
+/* Contenedor de botones del formulario */
+
+.formulario-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid var(--color-borde-suave);
+}
+
+
+/* ========================================
+   PANEL DERECHO - REQUISITOS
+   ======================================== */
+
+/* Reutiliza la clase .panel */
 
 .panel-requisitos {
-    position: sticky;
-    top: 24px;
-    background: #fafafa;
-    padding: 27px;
+    flex: 1 1 270px;
+    min-width: 0;
+    background: var(--color-superficie-suave);
 }
 
 .requisitos-cabecera {
@@ -382,15 +418,11 @@ body {
     margin-bottom: 25px;
 }
 
-.requisitos-icono {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: #e7f1ff;
-    color: #0071e3;
+/* Reutiliza .icono e .icono-azul */
+
+.requisitos-cabecera .icono {
+    margin-bottom: 0;
+    flex-shrink: 0;
     font-size: 19px;
     font-weight: 700;
 }
@@ -402,12 +434,14 @@ body {
 
 .requisitos-cabecera p {
     font-size: 11px;
-    color: #86868b;
+    color: var(--color-texto-secundario);
 }
+
+/* Lista de requisitos */
 
 .requisito {
     padding: 16px 0;
-    border-bottom: 1px solid #e8e8ed;
+    border-bottom: 1px solid var(--color-borde);
 }
 
 .requisito strong {
@@ -417,7 +451,7 @@ body {
 }
 
 .requisito p {
-    color: #86868b;
+    color: var(--color-texto-secundario);
     font-size: 12px;
     line-height: 1.6;
 }
@@ -432,7 +466,10 @@ body {
     line-height: 1.6;
 }
 
-/* ERRORES */
+
+/* ========================================
+   MENSAJES DE ERROR
+   ======================================== */
 
 .alerta-error {
     background: #fff0f0;
@@ -452,7 +489,10 @@ body {
     margin-top: 5px;
 }
 
-/* POPUP DE ÉXITO */
+
+/* ========================================
+   POPUP DE CONFIRMACION
+   ======================================== */
 
 .dialogo-exito {
     width: min(420px, 90vw);
@@ -461,10 +501,10 @@ body {
     border: none;
     border-radius: 22px;
     padding: 38px;
-    background: white;
+    background: var(--color-superficie);
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
     text-align: center;
-    color: #1d1d1f;
+    color: var(--color-texto);
 }
 
 .dialogo-exito::backdrop {
@@ -495,7 +535,7 @@ body {
 .dialogo-exito p {
     font-size: 14px;
     line-height: 1.7;
-    color: #86868b;
+    color: var(--color-texto-secundario);
     margin-bottom: 28px;
 }
 
@@ -503,16 +543,36 @@ body {
     width: 100%;
 }
 
-@media (max-width: 850px) {
 
-    .formulario-layout {
-        grid-template-columns: 1fr;
-    }
+/* ========================================
+   PIE DE PAGINA COMPARTIDO
+   ======================================== */
 
-    .panel-requisitos {
-        position: static;
-    }
+.pie {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+    font-size: 12px;
+    color: var(--color-texto-secundario);
 }
+
+.pie a {
+    color: var(--color-acento);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.pie a:hover {
+    text-decoration: underline;
+}
+
+
+/* ========================================
+   RESPONSIVE - MOVILES
+   Unico breakpoint de ancho: 650px
+   ======================================== */
 
 @media (max-width: 650px) {
 
@@ -533,7 +593,10 @@ body {
         flex-direction: column;
     }
 
-    .acciones {
+    /* Index y formulario comparten el cambio */
+
+    .acciones,
+    .formulario-grid {
         grid-template-columns: 1fr;
     }
 
@@ -541,35 +604,34 @@ body {
         min-height: 185px;
     }
 
+    /* Botones y pie de pagina */
+
+    .formulario-acciones,
     .pie {
         flex-direction: column;
         align-items: flex-start;
     }
-}
 
-@media (max-width: 500px) {
-
-    .formulario-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .formulario-panel {
-        padding: 22px;
-    }
-
-    .formulario-acciones {
-        flex-direction: column;
-    }
-
-    .formulario-acciones a,
-    .formulario-acciones button {
+    .formulario-acciones .boton-primario,
+    .formulario-acciones .boton-secundario {
         width: 100%;
     }
+}
+
+
+/* ========================================
+   ACCESIBILIDAD - MOVIMIENTO REDUCIDO
+   Independiente del tamano de pantalla
+   ======================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
     .tarjeta,
-    .flecha {
+    .flecha,
+    .campo input,
+    .boton-primario,
+    .boton-secundario,
+    .boton-volver {
         transition: none;
     }
-}
 }

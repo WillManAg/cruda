@@ -51,7 +51,7 @@
 
         <main class="contenedor">
 
-            <header class="cabecera cabecera-formulario">
+            <header class="cabecera">
 
                 <span class="etiqueta">
                     GESTIÓN DE EMPLEADOS
@@ -233,7 +233,7 @@
 
                     <div class="requisitos-cabecera">
 
-                        <span class="requisitos-icono">i</span>
+                        <span class="icono icono-azul">i</span>
 
                         <div>
                             <h2>Antes de guardar</h2>
