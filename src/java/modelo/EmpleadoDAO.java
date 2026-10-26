@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Types;
 
 public class EmpleadoDAO {
 
@@ -43,5 +44,27 @@ public class EmpleadoDAO {
         }
 
         return empleados;
+    }
+
+    public int insertarEmpleado(Empleado empleado) throws SQLException {
+
+        String sql = "INSERT INTO emp "
+                + "(EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = ConexionBD.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, empleado.getEmpno());
+            stmt.setString(2, empleado.getEname());
+            stmt.setString(3, empleado.getJob());
+            stmt.setObject(4, empleado.getMgr(), Types.INTEGER);
+            stmt.setObject(5, empleado.getHiredate(), Types.DATE);
+            stmt.setObject(6, empleado.getSal(), Types.INTEGER);
+            stmt.setObject(7, empleado.getComm(), Types.INTEGER);
+            stmt.setObject(8, empleado.getDeptno(), Types.INTEGER);
+
+            return stmt.executeUpdate();
+        }
+
     }
 }
