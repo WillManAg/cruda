@@ -5,12 +5,10 @@
         <group>
             <file>file:/Users/william.marin/Clase/Ernesto/cruda/web/index.jsp</file>
             <file>file:/Users/william.marin/Clase/Ernesto/cruda/src/java/modelo/ConexionBD.java</file>
-            <file>file:/Users/william.marin/Clase/Ernesto/cruda/src/java/controlador/ProbarConexionServlet.java</file>
-            <file>file:/Users/william.marin/Clase/Ernesto/cruda/web/css/estilos.css</file>
-            <file>file:/Users/william.marin/Clase/Ernesto/cruda/src/java/modelo/Empleado.java</file>
             <file>file:/Users/william.marin/Clase/Ernesto/cruda/src/java/modelo/EmpleadoDAO.java</file>
-            <file>file:/Users/william.marin/Clase/Ernesto/cruda/src/java/controlador/ListarEmpleadosServlet.java</file>
-            <file>file:/Users/william.marin/Clase/Ernesto/cruda/web/listado.jsp</file>
+            <file>file:/Users/william.marin/Clase/Ernesto/cruda/src/java/controlador/CrearEmpleadoServlet.java</file>
+            <file>file:/Users/william.marin/Clase/Ernesto/cruda/web/formulario.jsp</file>
+            <file>file:/Users/william.marin/Clase/Ernesto/cruda/web/css/estilos.css</file>
         </group>
     </open-files>
 </project-private>
