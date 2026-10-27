@@ -67,4 +67,63 @@ public class EmpleadoDAO {
         }
 
     }
+
+    public Empleado buscarPorEmpno(int empno) throws SQLException {
+
+        String sql = "SELECT * FROM emp WHERE EMPNO = ?";
+
+        try (Connection conn = ConexionBD.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, empno);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+
+                if (rs.next()) {
+
+                    return new Empleado(
+                            rs.getInt("EMPNO"),
+                            rs.getString("ENAME"),
+                            rs.getString("JOB"),
+                            rs.getObject("MGR", Integer.class),
+                            rs.getDate("HIREDATE"),
+                            rs.getObject("SAL", Integer.class),
+                            rs.getObject("COMM", Integer.class),
+                            rs.getObject("DEPTNO", Integer.class)
+                    );
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public int actualizarEmpleado(Empleado empleado)
+            throws SQLException {
+
+        String sql = "UPDATE emp SET "
+                + "ENAME = ?, "
+                + "JOB = ?, "
+                + "MGR = ?, "
+                + "HIREDATE = ?, "
+                + "SAL = ?, "
+                + "COMM = ?, "
+                + "DEPTNO = ? "
+                + "WHERE EMPNO = ?";
+
+        try (Connection conn = ConexionBD.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, empleado.getEname());
+            stmt.setString(2, empleado.getJob());
+            stmt.setObject(3, empleado.getMgr(), Types.INTEGER);
+            stmt.setObject(4, empleado.getHiredate(), Types.DATE);
+            stmt.setObject(5, empleado.getSal(), Types.INTEGER);
+            stmt.setObject(6, empleado.getComm(), Types.INTEGER);
+            stmt.setObject(7, empleado.getDeptno(), Types.INTEGER);
+
+            stmt.setInt(8, empleado.getEmpno());
+
+            return stmt.executeUpdate();
+        }
+    }
+
 }

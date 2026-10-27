@@ -40,6 +40,20 @@
                     <span>Selecciona una operación</span>
                 </div>
 
+
+                <%
+                    String error = (String) request.getAttribute("error");
+                %>
+
+                <% if (error != null) {%>
+
+                <div class="alerta-error" role="alert">
+                    <strong>No se ha podido localizar el empleado</strong>
+                    <p><%= error%></p>
+                </div>
+
+                <% }%>
+
                 <div class="acciones">
 
                     <a href="formulario.jsp" class="tarjeta">
@@ -56,7 +70,8 @@
                         <span class="flecha">↗</span>
                     </a>
 
-                    <a href="buscar.jsp?accion=modificar" class="tarjeta">
+                    <div class="tarjeta">
+
                         <div class="icono icono-violeta">
                             <svg viewBox="0 0 24 24" fill="none"
                                  stroke="currentColor" stroke-width="1.8">
@@ -67,11 +82,43 @@
                         </div>
 
                         <h3>Modificar empleado</h3>
-                        <p>Actualiza la información de un emp en la tabla.</p>
-                        <span class="flecha">↗</span>
-                    </a>
+                        <p>Busca un empleado para actualizar sus datos.</p>
 
-                    <a href="buscar.jsp?accion=eliminar" class="tarjeta">
+                        <form class="busqueda-rapida"
+                              action="<%= request.getContextPath()%>/buscarEmpleado"
+                              method="get">
+
+                            <input type="hidden"
+                                   name="accion"
+                                   value="modificar">
+
+                            <div class="campo">
+
+                                <label for="empno-modificar">
+                                    Número de empleado
+                                </label>
+
+                                <input type="number"
+                                       id="empno-modificar"
+                                       name="empno"
+                                       placeholder="Ej. 7369"
+                                       min="-2147483648"
+                                       max="2147483647"
+                                       step="1"
+                                       required>
+
+                            </div>
+
+                            <button type="submit" class="boton-primario">
+                                Buscar
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                    <div class="tarjeta">
+
                         <div class="icono icono-rojo">
                             <svg viewBox="0 0 24 24" fill="none"
                                  stroke="currentColor" stroke-width="1.8">
@@ -84,9 +131,41 @@
                         </div>
 
                         <h3>Despedir empleado</h3>
-                        <p>Elimina un registro de forma PERMANENTEEEE.</p>
-                        <span class="flecha">↗</span>
-                    </a>
+                        <p>Busca un empleado para eliminar su registro.</p>
+
+                        <form class="busqueda-rapida"
+                              action="<%= request.getContextPath()%>/buscarEmpleado"
+                              method="get">
+
+                            <input type="hidden"
+                                   name="accion"
+                                   value="eliminar">
+
+                            <div class="campo">
+
+                                <label for="empno-eliminar">
+                                    Número de empleado
+                                </label>
+
+                                <input type="number"
+                                       id="empno-eliminar"
+                                       name="empno"
+                                       placeholder="Ej. 7499"
+                                       min="-2147483648"
+                                       max="2147483647"
+                                       step="1"
+                                       required>
+
+                            </div>
+
+                            <button type="submit" class="boton-primario">
+                                Buscar
+                            </button>
+
+                        </form>
+
+                    </div>
+
 
                     <a href="<%= request.getContextPath()%>/listarEmpleados"
                        class="tarjeta">

@@ -544,6 +544,26 @@ body {
 }
 
 
+/* BUSQUEDA RAPIDA - INDEX */
+
+.busqueda-rapida {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.busqueda-rapida .campo {
+    flex: 1 1 170px;
+}
+
+.busqueda-rapida .boton-primario {
+    flex: 0 0 auto;
+}
+
+
+
 /* ========================================
    PIE DE PAGINA COMPARTIDO
    ======================================== */
