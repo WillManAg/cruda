@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="modelo.Empleado"%>
+<%@page import="javax.servlet.http.HttpServletRequest"%>
 
 <%!
     private String escapar(String texto) {
@@ -19,12 +21,68 @@
                 .replace("\"", "&quot;")
                 .replace("'", "&#39;");
     }
+
+    private String valor(HttpServletRequest request,
+            Empleado empleado,
+            String campo) {
+
+        String enviado = request.getParameter(campo);
+
+        if (enviado != null) {
+            return escapar(enviado);
+        }
+
+        if (empleado == null) {
+            return "";
+        }
+
+        Object dato = null;
+
+        switch (campo) {
+            case "empno":
+                dato = empleado.getEmpno();
+                break;
+            case "ename":
+                dato = empleado.getEname();
+                break;
+            case "job":
+                dato = empleado.getJob();
+                break;
+            case "mgr":
+                dato = empleado.getMgr();
+                break;
+            case "hiredate":
+                dato = empleado.getHiredate();
+                break;
+            case "sal":
+                dato = empleado.getSal();
+                break;
+            case "comm":
+                dato = empleado.getComm();
+                break;
+            case "deptno":
+                dato = empleado.getDeptno();
+                break;
+        }
+
+        return dato == null ? "" : escapar(dato.toString());
+    }
+
 %>
 
-<%
 
+<%
     String error = (String) request.getAttribute("error");
 
+    // Empleado recuperado desde MariaDB
+    Empleado empleado
+            = (Empleado) request.getAttribute("empleado");
+
+    // Detectar si estamos modificando
+    boolean modificando
+            = "modificar".equals(request.getParameter("accion"));
+
+    // Confirmacion de CREATE
     Integer empleadoCreado
             = (Integer) session.getAttribute("empleadoCreado");
 
@@ -32,7 +90,19 @@
         session.removeAttribute("empleadoCreado");
     }
 
+    // Confirmacion de UPDATE
+    Integer empleadoActualizado
+            = (Integer) session.getAttribute("empleadoActualizado");
+
+    if (empleadoActualizado != null) {
+        session.removeAttribute("empleadoActualizado");
+    }
+
+    // Seleccionar el empleado para el popup
+    Integer empleadoConfirmado = empleadoActualizado != null
+            ? empleadoActualizado : empleadoCreado;
 %>
+
 
 <!DOCTYPE html>
 <html>
@@ -41,7 +111,7 @@
         <meta name="viewport"
               content="width=device-width, initial-scale=1.0">
 
-        <title>Añadir empleado</title>
+        <title><%= modificando ? "Modificar" : "Añadir"%> empleado</title>
 
         <link rel="stylesheet"
               href="<%= request.getContextPath()%>/css/estilos.css">
@@ -57,7 +127,10 @@
                     GESTIÓN DE EMPLEADOS
                 </span>
 
-                <h1>Añadir empleado<span class="punto">.</span></h1>
+                <h1>
+                    <%= modificando ? "Modificar" : "Añadir"%>
+                    empleado<span class="punto">.</span>
+                </h1>
 
                 <p>Introduce los datos del nuevo empleado.</p>
 
@@ -81,9 +154,12 @@
 
                     <% }%>
 
-                    <form action="<%= request.getContextPath()%>/crearEmpleado"
-                          method="post">
+                    <form action="<%= request.getContextPath()%>/<%= modificando ? "modificarEmpleado" : "crearEmpleado"%>"
+                          method="post">>
 
+                        <input type="hidden"
+                               name="accion"
+                               value="<%= modificando ? "modificar" : "crear"%>">
                         <div class="formulario-grid">
 
                             <div class="campo campo-ancho">
@@ -100,7 +176,8 @@
                                        min="-2147483648"
                                        max="2147483647"
                                        step="1"
-                                       value="<%= escapar(request.getParameter("empno"))%>"
+                                       value="<%= valor(request, empleado, "empno")%>"
+                                       <%= modificando ? "readonly" : ""%>
                                        required>
 
                                 <small>Identificador único del empleado.</small>
@@ -116,7 +193,7 @@
                                        name="ename"
                                        maxlength="10"
                                        placeholder="Ej. SMITH"
-                                       value="<%= escapar(request.getParameter("ename"))%>">
+                                       value="<%= valor(request, empleado, "ename")%>">
 
                                 <small>Máximo 10 caracteres.</small>
 
@@ -131,7 +208,7 @@
                                        name="job"
                                        maxlength="9"
                                        placeholder="Ej. ANALYST"
-                                       value="<%= escapar(request.getParameter("job"))%>">
+                                       value="<%= valor(request, empleado, "job")%>">
 
                                 <small>Máximo 9 caracteres.</small>
 
@@ -148,7 +225,7 @@
                                        min="-2147483648"
                                        max="2147483647"
                                        placeholder="Ej. 7839"
-                                       value="<%= escapar(request.getParameter("mgr"))%>">
+                                       value="<%= valor(request, empleado, "mgr")%>">
 
                             </div>
 
@@ -161,7 +238,7 @@
                                        name="hiredate"
                                        min="1000-01-01"
                                        max="9999-12-31"
-                                       value="<%= escapar(request.getParameter("hiredate"))%>">
+                                       value="<%= valor(request, empleado, "hiredate")%>">
 
                             </div>
 
@@ -176,7 +253,7 @@
                                        min="-2147483648"
                                        max="2147483647"
                                        placeholder="Ej. 1800"
-                                       value="<%= escapar(request.getParameter("sal"))%>">
+                                       value="<%= valor(request, empleado, "sal")%>">
 
                             </div>
 
@@ -191,7 +268,7 @@
                                        min="-2147483648"
                                        max="2147483647"
                                        placeholder="Ej. 300"
-                                       value="<%= escapar(request.getParameter("comm"))%>">
+                                       value="<%= valor(request, empleado, "comm")%>">
 
                             </div>
 
@@ -206,7 +283,7 @@
                                        min="-2147483648"
                                        max="2147483647"
                                        placeholder="Ej. 20"
-                                       value="<%= escapar(request.getParameter("deptno"))%>">
+                                       value="<%= valor(request, empleado, "deptno")%>">
 
                             </div>
 
@@ -215,7 +292,7 @@
                         <div class="formulario-acciones">
 
                             <button type="submit" class="boton-primario">
-                                Guardar empleado
+                                <%= modificando ? "Guardar cambios" : "Guardar empleado"%>
                             </button>
 
                             <a href="<%= request.getContextPath()%>/index.jsp"
@@ -308,7 +385,8 @@
         </main>
 
 
-        <% if (empleadoCreado != null) {%>
+
+        <% if (empleadoConfirmado != null) {%>
 
         <dialog id="popup-exito"
                 class="dialogo-exito"
@@ -316,11 +394,15 @@
 
             <div class="confirmacion-icono">✓</div>
 
-            <h2 id="titulo-exito">¡Empleado creado!</h2>
+            <h2 id="titulo-exito">
+                ¡Empleado
+                <%= empleadoActualizado != null
+                        ? "actualizado" : "creado"%>!
+            </h2>
 
             <p>
                 El empleado con número
-                <strong><%= empleadoCreado%></strong>
+                <strong><%= empleadoConfirmado%></strong>
                 se ha guardado correctamente en MariaDB.
             </p>
 
@@ -336,6 +418,7 @@
         </script>
 
         <% }%>
+
 
     </body>
 </html>
