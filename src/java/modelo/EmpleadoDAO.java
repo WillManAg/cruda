@@ -126,4 +126,16 @@ public class EmpleadoDAO {
         }
     }
 
+    public int eliminarEmpleado(int empno) throws SQLException {
+
+        String sql = "DELETE FROM emp WHERE EMPNO = ?";
+
+        try (Connection conn = ConexionBD.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, empno);
+
+            return stmt.executeUpdate();
+        }
+    }
+
 }

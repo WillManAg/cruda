@@ -41,9 +41,18 @@
                 </div>
 
 
+
                 <%
                     String error = (String) request.getAttribute("error");
+
+                    Integer empleadoEliminado
+                            = (Integer) session.getAttribute("empleadoEliminado");
+
+                    if (empleadoEliminado != null) {
+                        session.removeAttribute("empleadoEliminado");
+                    }
                 %>
+
 
                 <% if (error != null) {%>
 
@@ -187,7 +196,7 @@
             </section>
 
             <footer class="pie">
-                <span>Gestión de Empleados · Java + JDBC + MariaDB</span>
+                <span>Gestión de Empleados · Java + JDBC + MariaDB BY: William Marin</span>
 
                 <a href="<%= request.getContextPath()%>/probarConexion">
                     Comprobar conexión ↗
@@ -195,6 +204,41 @@
             </footer>
 
         </main>
+
+
+        <% if (empleadoEliminado != null) {%>
+
+        <dialog id="popup-eliminado"
+                class="dialogo-exito"
+                aria-labelledby="titulo-eliminado">
+
+            <div class="confirmacion-icono">✓</div>
+
+            <h2 id="titulo-eliminado">
+                ¡Empleado eliminado!
+            </h2>
+
+            <p>
+                El empleado 
+                <strong><%= empleadoEliminado%></strong>
+                se ha eliminado correctamente de la BBDD.
+            </p>
+
+            <form method="dialog">
+
+                <button type="submit" class="boton-primario">
+                    Aceptar
+                </button>
+
+            </form>
+
+        </dialog>
+
+        <script>
+            document.getElementById("popup-eliminado").showModal();
+        </script>
+
+        <% }%>
 
     </body>
 </html>

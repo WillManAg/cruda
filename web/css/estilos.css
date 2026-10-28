@@ -387,6 +387,16 @@ body {
     outline-offset: 3px;
 }
 
+/* Variante de peligro para DELETE */
+
+.boton-peligro {
+    background: #e5484d;
+}
+
+.boton-peligro:hover {
+    background: #be3237;
+}
+
 /* Contenedor de botones del formulario */
 
 .formulario-acciones {

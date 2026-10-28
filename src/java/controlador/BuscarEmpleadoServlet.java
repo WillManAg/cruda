@@ -28,10 +28,11 @@ public class BuscarEmpleadoServlet extends HttpServlet {
 
         String accion = request.getParameter("accion");
 
-        if (!"modificar".equals(accion)) {
+        if (!"modificar".equals(accion)
+                && !"eliminar".equals(accion)) {
 
             mostrarError(request, response,
-                    "La eliminacion todavia no esta implementada.");
+                    "Operacion no valida.");
             return;
         }
 
@@ -54,7 +55,15 @@ public class BuscarEmpleadoServlet extends HttpServlet {
 
             request.setAttribute("empleado", empleado);
 
-            request.getRequestDispatcher("/formulario.jsp")
+            String destino;
+
+            if ("eliminar".equals(accion)) {
+                destino = "/confirmarEliminar.jsp";
+            } else {
+                destino = "/formulario.jsp";
+            }
+
+            request.getRequestDispatcher(destino)
                     .forward(request, response);
 
         } catch (NumberFormatException e) {
