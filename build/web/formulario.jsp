@@ -74,15 +74,12 @@
 <%
     String error = (String) request.getAttribute("error");
 
-    // Empleado recuperado desde MariaDB
     Empleado empleado
             = (Empleado) request.getAttribute("empleado");
 
-    // Detectar si estamos modificando
     boolean modificando
             = "modificar".equals(request.getParameter("accion"));
 
-    // Confirmacion de CREATE
     Integer empleadoCreado
             = (Integer) session.getAttribute("empleadoCreado");
 
@@ -90,7 +87,6 @@
         session.removeAttribute("empleadoCreado");
     }
 
-    // Confirmacion de UPDATE
     Integer empleadoActualizado
             = (Integer) session.getAttribute("empleadoActualizado");
 
@@ -98,7 +94,6 @@
         session.removeAttribute("empleadoActualizado");
     }
 
-    // Seleccionar el empleado para el popup
     Integer empleadoConfirmado = empleadoActualizado != null
             ? empleadoActualizado : empleadoCreado;
 %>
@@ -173,7 +168,7 @@
                                        id="empno"
                                        name="empno"
                                        placeholder="Ej. 8000"
-                                       min="-2147483648"
+                                       min="1"
                                        max="2147483647"
                                        step="1"
                                        value="<%= valor(request, empleado, "empno")%>"
@@ -222,7 +217,7 @@
                                        id="mgr"
                                        name="mgr"
                                        step="1"
-                                       min="-2147483648"
+                                       min="1"
                                        max="2147483647"
                                        placeholder="Ej. 7839"
                                        value="<%= valor(request, empleado, "mgr")%>">
@@ -250,7 +245,7 @@
                                        id="sal"
                                        name="sal"
                                        step="1"
-                                       min="-2147483648"
+                                       min="1"
                                        max="2147483647"
                                        placeholder="Ej. 1800"
                                        value="<%= valor(request, empleado, "sal")%>">
@@ -265,7 +260,7 @@
                                        id="comm"
                                        name="comm"
                                        step="1"
-                                       min="-2147483648"
+                                       min="1"
                                        max="2147483647"
                                        placeholder="Ej. 300"
                                        value="<%= valor(request, empleado, "comm")%>">
@@ -280,7 +275,7 @@
                                        id="deptno"
                                        name="deptno"
                                        step="1"
-                                       min="-2147483648"
+                                       min="1"
                                        max="2147483647"
                                        placeholder="Ej. 20"
                                        value="<%= valor(request, empleado, "deptno")%>">
@@ -325,6 +320,7 @@
                         <p>
                             Es el único campo obligatorio.
                             No puede repetirse si EMPNO es clave primaria.
+                            No puede ser negativo.
                         </p>
 
                     </div>
