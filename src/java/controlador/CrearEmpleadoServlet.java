@@ -38,6 +38,8 @@ public class CrearEmpleadoServlet extends HttpServlet {
 
             if (filas == 1) {
 
+                CookieOperaciones.incrementar(request, response);
+                
                 request.getSession().setAttribute(
                         "empleadoCreado", empleado.getEmpno()
                 );

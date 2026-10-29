@@ -33,6 +33,8 @@ public class ListarEmpleadosServlet extends HttpServlet {
 
             ArrayList<Empleado> empleados
                     = dao.listarEmpleados();
+            
+            CookieOperaciones.incrementar(request, response);
 
             request.setAttribute("empleados", empleados);
 

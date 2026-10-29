@@ -43,6 +43,8 @@ public class ModificarEmpleadoServlet extends HttpServlet {
 
             if (filas == 1) {
 
+                CookieOperaciones.incrementar(request, response);
+                
                 request.getSession().setAttribute(
                         "empleadoActualizado", empleado.getEmpno()
                 );
