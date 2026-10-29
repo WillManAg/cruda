@@ -18,7 +18,7 @@ public class ConexionBD {
             = "jdbc:mariadb://localhost:3306/practica";
 
     private static final String USUARIO = "root";
-    private static final String CLAVE = "miriam8";
+    private static final String CLAVE = "uwu";
 
     public static Connection conectar() throws SQLException {
 

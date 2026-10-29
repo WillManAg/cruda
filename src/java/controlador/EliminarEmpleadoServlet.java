@@ -37,6 +37,8 @@ public class EliminarEmpleadoServlet extends HttpServlet {
             int filas = dao.eliminarEmpleado(empno);
 
             if (filas == 1) {
+                
+                CookieOperaciones.incrementar(request, response);
 
                 request.getSession().setAttribute(
                         "empleadoEliminado", empno

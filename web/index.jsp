@@ -257,7 +257,7 @@
             </section>
 
             <footer class="pie">
-                <span>Gestión de Empleados · Java + JDBC + MariaDB BY: William Marin</span>
+                <span>Gestión de Empleados · Java + JDBC + MariaDB · BY: William Marin</span>
 
                 <a href="<%= request.getContextPath()%>/probarConexion">
                     Comprobar conexión ↗

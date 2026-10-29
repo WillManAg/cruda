@@ -162,7 +162,7 @@
         </section>
 
         <footer class="pie">
-            <span>Gestión de Empleados · Java + JDBC + MariaDB BY: William Marin</span>
+            <span>Gestión de Empleados · Java + JDBC + MariaDB · BY: William Marin</span>
         </footer>
 
     </main>
