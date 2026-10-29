@@ -44,7 +44,7 @@ public class EmpleadoFormulario {
         Integer deptno = enteroOpcional(
                 request.getParameter("deptno"), "DEPTNO");
 
-        if (empno == null) {
+        if (empno == null | empno <= 0) {
             throw new IllegalArgumentException(
                     "El numero de empleado es obligatorio.");
         }
