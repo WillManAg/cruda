@@ -6,6 +6,13 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="controlador.CookieOperaciones"%>
+<%@page import="javax.servlet.http.Cookie"%>
+<%@page import="java.time.Instant"%>
+<%@page import="java.time.ZoneId"%>
+<%@page import="java.time.DateTimeException"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -51,6 +58,43 @@
                     if (empleadoEliminado != null) {
                         session.removeAttribute("empleadoEliminado");
                     }
+
+                    int totalOperaciones = CookieOperaciones.obtener(request);
+
+                    String ultimaOperacion = "Todavía no hay operaciones";
+
+                    Cookie[] cookies = request.getCookies();
+
+                    if (cookies != null) {
+
+                        for (Cookie cookie : cookies) {
+
+                            if ("ultimaOperacion".equals(cookie.getName())) {
+
+                                try {
+
+                                    long timestamp = Long.parseLong(
+                                            cookie.getValue()
+                                    );
+
+                                    DateTimeFormatter formato
+                                            = DateTimeFormatter
+                                                    .ofPattern("dd/MM/yyyy HH:mm:ss")
+                                                    .withZone(ZoneId.of("Europe/Madrid"));
+
+                                    ultimaOperacion = formato.format(
+                                            Instant.ofEpochMilli(timestamp)
+                                    );
+
+                                } catch (NumberFormatException | DateTimeException e) {
+                                    ultimaOperacion = "Fecha no válida";
+                                }
+
+                                break;
+                            }
+                        }
+                    }
+
                 %>
 
 
@@ -190,6 +234,23 @@
                         <p>Consulta todos los registros de la tabla.</p>
                         <span class="flecha">↗</span>
                     </a>
+
+                </div>
+
+
+                <div class="resumen-actividad">
+
+                    <h3>Actividad de este navegador</h3>
+
+                    <p>
+                        Operaciones realizadas:
+                        <strong><%= totalOperaciones%></strong>
+                    </p>
+
+                    <p>
+                        Última operación:
+                        <strong><%= ultimaOperacion%></strong>
+                    </p>
 
                 </div>
 

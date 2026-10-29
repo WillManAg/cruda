@@ -31,6 +31,9 @@ public class CookieOperaciones {
                         int contador = Integer.parseInt(
                                 cookie.getValue()
                         );
+                        
+                        return Math.max(0, contador);
+                        
                     } catch (NumberFormatException e) {
                         return 0;
                     }
@@ -67,6 +70,19 @@ public class CookieOperaciones {
         cookie.setHttpOnly(true);
         
         response.addCookie(cookie);
+        
+        Cookie ultimaOperacion = new Cookie(
+                "ultimaOperacion",
+                String.valueOf(System.currentTimeMillis())
+        );
+        
+        ultimaOperacion.setMaxAge(60 * 60 * 24 * 30);
+        
+        ultimaOperacion.setPath(ruta.isEmpty() ? "/" : ruta);
+        
+        ultimaOperacion.setHttpOnly(true);
+        
+        response.addCookie(ultimaOperacion);
         
     }
     
